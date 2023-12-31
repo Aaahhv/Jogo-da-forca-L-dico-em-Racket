@@ -11,17 +11,79 @@
   [(= fase_atual 1) (inicia_nivel_1.1)]
   [(= fase_atual 2) (inicia_nivel_1.2)]
   [(= fase_atual 3) (inicia_nivel_1.3)]
- ; [(= fase_atual 4) (inicia_nivel_1.4)]
- ; [(= fase_atual 5) (inicia_nivel_1.5)]
-  [else (println "PERDEU")]));ELSE FUNCAO_PERDEU
+  [(= fase_atual 4) (inicia_nivel_1.4)]
+  [(= fase_atual 5) (inicia_nivel_1.5)]
+  [else (println "deu erro na funcao (proxima fase), é necessario criar outro nivel")]));
 
 ;=============================================================
 ;INTERFACE 1.5
 ;=============================================================
 
+(define frame_nivel_1.5 (new frame% [label "Nível 1.5"] [width 300] [height 200]))
+
+(define msg-text-1.5 (new message% [parent frame_nivel_1.5] [label "Qual é a informação verdadeira sobre a linguagem Racket?"] [stretchable-width #t]))
+(define msg-text2-1.5 (new message% [parent frame_nivel_1.5] [label ""] [stretchable-width #t]))
+
+(define button1-1.5 (new button% [parent frame_nivel_1.5] [label "Racket não suporta orientação a objetos"]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_1.5 show #f)
+                                        (inicia_forca #t)
+                                        )]))
+
+(define button2-1.5 (new button% [parent frame_nivel_1.5] [label "Racket é comumente uasda em desenvolvimento Web Front-End"]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_1.5 show #f)
+                                        (inicia_forca #f)
+                                        )]))
+
+(define button3-1.5 (new button% [parent frame_nivel_1.5] [label "Racket é uma linguagem de programação que suporta programação funcional e procedural."]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_1.5 show #f)
+                                        (inicia_forca #t)
+                                        )]))
+
+(define button4-1.5 (new button% [parent frame_nivel_1.5] [label " A sintaxe de Racket é baseada em C++."]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_1.5 show #f)
+                                        (inicia_forca #f)
+                                        )]))
+
+
+(define (inicia_nivel_1.5) (send frame_nivel_1.5 show #t))
 ;=============================================================
 ;INTERFACE 1.4
 ;=============================================================
+
+(define frame_nivel_1.4 (new frame% [label "Nível 1.4"] [width 300] [height 200]))
+
+(define msg-text-1.4 (new message% [parent frame_nivel_1.4] [label "Qual dessas expressões sempre é verdadeira?"] [stretchable-width #t]))
+(define msg-text2-1.4 (new message% [parent frame_nivel_1.4] [label ""] [stretchable-width #t]))
+
+(define button1-1.4 (new button% [parent frame_nivel_1.4] [label "(or #f #f)"]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_1.4 show #f)
+                                        (inicia_forca #f)
+                                        )]))
+
+(define button2-1.4 (new button% [parent frame_nivel_1.4] [label "(= 44 125)"]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_1.4 show #f)
+                                        (inicia_forca #f)
+                                        )]))
+
+(define button3-1.4 (new button% [parent frame_nivel_1.4] [label "(= biscoito bolacha)  "]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_1.4 show #f)
+                                        (inicia_forca #f)
+                                        )]))
+
+(define button4-1.4 (new button% [parent frame_nivel_1.4] [label "(nand #f #t)"]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_1.4 show #f)
+                                        (inicia_forca #t)
+                                        )]))
+
+(define (inicia_nivel_1.4) (send frame_nivel_1.4 show #t))
 
 ;=============================================================
 ;INTERFACE 1.3
@@ -213,33 +275,35 @@
  )
 
 (define (forca vector-str vidas chutes);essa funcao continua o jogo
-          (send msg-text9-forca set-label (string-join (vector->list vector-str) ""))
-          (send msg-text11-forca set-label chutes)
-  
+  (send msg-text9-forca set-label (string-join (vector->list vector-str) "")) ;AAAAAAAAAAAAAAAAAAAAAAA
+  (send msg-text11-forca set-label chutes)
   (cond
+  [(= vidas 0) (send frame_forca show #t)] ;espero q a funcao nao esteja retornando #t aqui
   [(= vidas 1)
-   (send msg-text5-forca set-label "|     O")]
+   (send msg-text5-forca set-label "|     O")
+   (send frame_forca show #t)]
   
   [(= vidas 2)
    (begin
      (send msg-text5-forca set-label "|     O")
-     (send msg-text6-forca set-label "|     |"))]
+     (send msg-text6-forca set-label "|     |"))
+     (send frame_forca show #t)]
   
   [(= vidas 3)
    (begin
      (send msg-text5-forca set-label "|     O")
-     (send msg-text6-forca set-label "|    -|-"))]
+     (send msg-text6-forca set-label "|    -|-"))
+     (send frame_forca show #t)]
   
   [(= vidas 4)
    (begin
      (send msg-text5-forca set-label "|     O")
      (send msg-text6-forca set-label "|    -|-")
-     (send msg-text7-forca set-label "|    /|"))]
-  
-  [else #f]) ;ELSE FUNCAO_PERDEU KKKKKKKKKKKK
-
-          (send frame_forca refresh)
-          (send frame_forca show #t)
+     (send msg-text7-forca set-label "|    /|"))
+     (send frame_forca show #t)]
+   
+  [else
+   (inicia_frame_perdeu_jogo chutes)])
   )
 
 (define aux 0) ;eu nao encontrei outra maneira de fazer isso sem essa variavel auxiliar
@@ -261,12 +325,36 @@
           )
   )
 )
+;=============================================================
+;INTERFACE PERDEU JOGO
+;=============================================================
+(define frame_perdeu_jogo (new frame% [label "Perdeu_jogo"] [width 300] [height 200])) ;esse frame aparece quando a pessoa perde o jogo
+(define msg-text1-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label ""] [stretchable-width #t]))
+(define msg-text2-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label "Infelizmente você não passou no teste. :("][stretchable-width #t]))
+(define msg-text2_5-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label (string-append "A palavra era: " palavra_nivel4)][stretchable-width #t]))
+(define msg-text3-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label " ____"][stretchable-width #t]))
+(define msg-text4-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label "|     |"][stretchable-width #t]))
+(define msg-text5-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label "|     O"][stretchable-width #t]))
+(define msg-text6-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label "|    -|-"][stretchable-width #t]))
+(define msg-text7-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label "|    /|"][stretchable-width #t]))
+(define msg-text8-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label "|"][stretchable-width #t]))
+(define msg-text9-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label (string-join (vector->list string_nivel4) "")][stretchable-width #t])) ;AAAAAAAAAAAAAAAAAAAAA
+(define msg-text10-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label ""][stretchable-width #t]))
+(define msg-text11-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label chutes][stretchable-width #t]))
+(define msg-text12-perdeu-jogo (new message% [parent frame_perdeu_jogo] [label ""] [stretchable-width #t]))
 
+
+(define button-perdeu-jogo (new button% [parent frame_perdeu_jogo] [label "Entendi :("] ;botão de confirmar letra
+                             [callback (lambda (button event)
+                                         (send frame_perdeu_jogo show #f))]))
+(define (inicia_frame_perdeu_jogo chutes_realizados)
+   (send frame_perdeu_jogo show #t)
+    (send msg-text11-perdeu-jogo set-label chutes_realizados)) ;isso tem que ser feito de maneira dinâmica
 ;=============================================================
 ;INTERFACE FORCA
 ;=============================================================
 (define frame_forca (new frame% [label "Forca"] [width 300] [height 200]))
-(define valor-digitado #f) ;essa variavel serve para armazenar o valor digitado pelo usuario
+(define valor-digitado #f)
 
 (define msg-text1-forca (new message% [parent frame_forca] [label ""] [stretchable-width #t]))
 (define msg-text2-forca (new message% [parent frame_forca] [label "Chute uma letra minuscula, você deve acertar a palavra abaixo da forca: "][stretchable-width #t]))
@@ -290,26 +378,5 @@
                                          (send frame_forca show #f)
                                          (set! valor-digitado (send text-box-forca get-value)) ;isso daqui caputura o valor captado no text-field e armazena na variável valor-digitado
                                          (efetuou_chute valor-digitado)
-                                         ) ;chama a funcao do controlador, ela verifica se ele acertou ou errou
+                                         ) 
                                          ]))
-
-;=============================================================
-;INTERFACE MAIN
-;=============================================================
-(define frame_main (new frame% [label "Introdução"] [width 300] [height 200]))
-
-(define msg-text1-main (new message% [parent frame_main] [label "--==Essa história se passa em 1645 d.c==--"] [stretchable-width #t]))
-(define msg-text2-main (new message% [parent frame_main] [label "O rei ficou maluco, ele está chateado com os niveis de educação do paíz e resolveu intervir da sua própria maneira. "][stretchable-width #t]))
-(define msg-text3-main (new message% [parent frame_main] [label "Todas os seus súditos serão submetidas a testes de lógica de programação em racket e de alfabetismo."][stretchable-width #t]))
-(define msg-text4-main (new message% [parent frame_main] [label "Nesse teste um súdito de cada vez deve: acertar um problema de lógica e em seguida chutar letras para tentar acertar uma palavra."][stretchable-width #t]))
-(define msg-text5-main (new message% [parent frame_main] [label "Se a pessoa errar uma letra ela deve acertar outro problema de lógica para voltar a chutar letras."][stretchable-width #t]))
-(define msg-text6-main (new message% [parent frame_main] [label "Se a pessoa errar 5 letras ela vai para a forca e perde."][stretchable-width #t]))
-(define msg-text7-main (new message% [parent frame_main] [label "A pessoa deve acertar 4 palavras para passar no teste."][stretchable-width #t]))
-(define msg-text8-main (new message% [parent frame_main] [label "As palavras são palavras usadas na linguagem Racket."][stretchable-width #t]))
-
-(define button1-main (new button% [parent frame_main] [label "Entendi! Vamos começar"]
-                            [callback (lambda (button event)
-                                        (send frame_main show #f)
-                                        (proxima_fase) ;;essa funcao inicia a proxima fase, comaça na 1.1
-                                        )]))
-(send frame_main show #t)
