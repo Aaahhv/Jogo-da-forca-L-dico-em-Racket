@@ -1,19 +1,22 @@
 #lang racket
 (require racket/gui/base)
-;=============================================================
-;CONTROLADOR FASE
-;=============================================================
-(define fase_atual 0)
 
-(define (proxima_fase)
-  (set! fase_atual (+ fase_atual 1))
-  (cond
-  [(= fase_atual 1) (inicia_nivel_1.1)]
-  [(= fase_atual 2) (inicia_nivel_1.2)]
-  [(= fase_atual 3) (inicia_nivel_1.3)]
-  [(= fase_atual 4) (inicia_nivel_1.4)]
-  [(= fase_atual 5) (inicia_nivel_1.5)]
-  [else (println "deu erro na funcao (proxima fase), é necessario criar outro nivel")]));
+;=============================================================
+;CONTROLADOR NIVEL/FASE
+;=============================================================
+(define nivel_atual 0)
+(define (proximo_nivel)
+  (set! nivel_atual (+ nivel_atual 1))
+  (if (> vidas 4)
+      (inicia_frame_perdeu_jogo chutes)
+      (begin 
+        (cond
+          [(= nivel_atual 1) (inicia_nivel_1.1)]
+          [(= nivel_atual 2) (inicia_nivel_1.2)]
+          [(= nivel_atual 3) (inicia_nivel_1.3)]
+          [(= nivel_atual 4) (inicia_nivel_1.4)]
+          [(= nivel_atual 5) (inicia_nivel_1.5)]
+          [else (println "deu erro na funcao (proxima fase), é necessario criar outro nivel")]))));
 
 ;=============================================================
 ;INTERFACE 1.5
@@ -193,29 +196,29 @@
 
 (define (inicia_nivel_1.1) (send frame_nivel_1.1 show #t))
 ;=============================================================
-;INTERFACE ACERTOU FASE
+;INTERFACE ACERTOU nivel
 ;=============================================================
-(define frame_acertou_fase (new frame% [label "Forca_acertou"] [width 300] [height 200])) ;esse frame aparece quando a pessoa perde
+(define frame_acertou_nivel (new frame% [label "Forca_acertou_nivel"] [width 300] [height 200])) ;esse frame aparece quando a pessoa perde
 
-(define msg-text1_acertou_fase (new message% [parent frame_acertou_fase] [label "Parabéns, você acertou essa fase, agora você pode chutar letras!"] [stretchable-width #t]))
-(define button_acertou_fase (new button% [parent frame_acertou_fase] [label "Entendido"]
+(define msg-text1_acertou_nivel (new message% [parent frame_acertou_nivel] [label "Parabéns, você acertou essa fase, agora você pode chutar letras!"] [stretchable-width #t]))
+(define button_acertou_nivel (new button% [parent frame_acertou_nivel] [label "Entendido"]
      [callback (lambda (button event)
-                 (send frame_acertou_fase show #f)
+                 (send frame_acertou_nivel show #f)
                  (forca string_nivel4 vidas chutes))])) ;CHAMA  A FORCA
-(define (inicia_frame_acertou_fase) (send frame_acertou_fase show #t))  
+(define (inicia_frame_acertou_nivel) (send frame_acertou_nivel show #t))  
 
 ;=============================================================
-;INTERFACE ERROU FASE
+;INTERFACE ERROU nivel
 ;=============================================================
-(define frame_errou_fase (new frame% [label "Fase_perdeu"] [width 300] [height 200])) ;esse frame aparece quando a pessoa perde uma fase
+(define frame_errou_nivel (new frame% [label "Fase_perdeu_nivel"] [width 300] [height 200])) ;esse frame aparece quando a pessoa perde uma fase
 
-(define msg-text1_perdeu_fase (new message% [parent frame_errou_fase] [label "Você errou essa fase, você pode chutar letras mas perdeu uma vida."] [stretchable-width #t]))
-(define button_perdeu_fase (new button% [parent frame_errou_fase] [label "Entendido"]
+(define msg-text1_perdeu_nivel (new message% [parent frame_errou_nivel] [label "Você errou essa fase, você pode chutar letras mas perdeu uma vida."] [stretchable-width #t]))
+(define button_perdeu_nivel (new button% [parent frame_errou_nivel] [label "Entendido"]
      [callback (lambda (button event)
-                 (send frame_errou_fase show #f)
+                 (send frame_errou_nivel show #f)
                  (forca string_nivel4 vidas chutes))])) ;CHAMA  A FORCA 
 
-(define (inicia_frame_errou_fase) (send frame_errou_fase show #t))  
+(define (inicia_frame_errou_nivel) (send frame_errou_nivel show #t))  
 ;=============================================================
 ;INTERFACE ACERTOU LETRA
 ;=============================================================
@@ -237,9 +240,27 @@
 (define button_perdeu (new button% [parent frame_forca_errou] [label "Entendido"]
      [callback (lambda (button event)
                  (send frame_forca_errou show #f)
-                 (proxima_fase))])) ;CHAMA PROXIMA FASE
+                 (proximo_nivel))])) ;CHAMA PROXIMA FASE
 
 (define (inicia_frame_forca_errou) (send frame_forca_errou show #t))  
+;=============================================================
+;SORTEIA PALAVRAS
+;=============================================================
+(define vetor_nivel4 (vector "define" "lambda" "unless" "provide" "require" "module" "include" "vector" "struct"))
+(define palavra_nivel4 (vector-ref vetor_nivel4 (random 9)))
+(define string_nivel4 (make-vector (string-length palavra_nivel4) "_ " ))
+
+(define vetor_nivel3 (vector "quote" "begin" "while" "unless" "match" "input"))
+(define palavra_nivel3 (vector-ref vetor_nivel3 (random 6)))
+(define string_nivel3 (make-vector (string-length palavra_nivel3) "_ " ))
+
+(define vetor_nivel2 (vector "cond" "when" "else" "when" "case"))
+(define palavra_nivel2 (vector-ref vetor_nivel2 (random 5)))
+(define string_nivel2 (make-vector (string-length palavra_nivel2) "_ " ))
+
+(define vetor_nivel1 (vector "let" "if" "set" "and" "or" "not" "for" "do" "key"))
+(define palavra_nivel1 (vector-ref vetor_nivel1 (random 9)))
+(define string_nivel1 (make-vector (string-length palavra_nivel1) "_ " ))
 
 ;=============================================================
 ;CONTROLADOR FORCA
@@ -247,38 +268,24 @@
 (define vidas 0)
 (define acertou_palavra #f)
 (define chutes "Letras já chutadas: ")
-
-;;as funcoes a seguir definem as palavras sorteadas para a forca, para cada jogo são sorteadas 4 palavras
-(define vetor_nivel4 (vector "define" "lambda" "unless" "provide" "require" "module" "include" "vector" "struct"))
-(define palavra_nivel4 (vector-ref vetor_nivel4 (random 9)))
-(define string_nivel4 (make-vector (string-length palavra_nivel4) "_ " ))
-(println palavra_nivel4)
-
-(define vetor_nivel3 (vector "quote" "begin" "while" "unless" "match" "input"))
-(define palavra_nivel3 (vector-ref vetor_nivel3 (random 6)))
-
-(define vetor_nivel2 (vector "cond" "when" "else" "when" "case"))
-(define palavra_nivel2 (vector-ref vetor_nivel2 (random 5)))
-
-(define vetor_nivel1 (vector "let" "if" "set" "and" "or" "not" "for" "do" "key"))
-(define palavra_nivel1 (vector-ref vetor_nivel1 (random 9)))
+(define quantidade_letras_acertadas 0)
 
 (define (inicia_forca acertou) ;;essa funcao é chamada quando um nivel é completado e vai para a forca
         (if (not acertou)
             (begin
-            (inicia_frame_errou_fase)
+            (inicia_frame_errou_nivel)
             (set! vidas (+ vidas 1))
             )
-            (inicia_frame_acertou_fase)
+            (inicia_frame_acertou_nivel)
         )
     #t
  )
 
 (define (forca vector-str vidas chutes);essa funcao continua o jogo
-  (send msg-text9-forca set-label (string-join (vector->list vector-str) "")) ;AAAAAAAAAAAAAAAAAAAAAAA
+  (send msg-text9-forca set-label (string-join (vector->list vector-str) ""))
   (send msg-text11-forca set-label chutes)
   (cond
-  [(= vidas 0) (send frame_forca show #t)] ;espero q a funcao nao esteja retornando #t aqui
+  [(= vidas 0) (send frame_forca show #t)]
   [(= vidas 1)
    (send msg-text5-forca set-label "|     O")
    (send frame_forca show #t)]
@@ -314,8 +321,14 @@
     (if (string=? (substring palavra_nivel4 i (+ i 1)) letra)
         (begin    ;ACERTOU
           (set! aux 1)
-          (vector-set! string_nivel4 i (string-append letra " ")))
-        (+ aux 0)
+          (set! quantidade_letras_acertadas (+ quantidade_letras_acertadas 1))
+          (vector-set! string_nivel4 i (string-append letra " "))
+          ;(if (= (string-length palavra_nivel4) quantidade_letras_acertadas)
+              ;(inicia_proximo_nivel)
+              ;interface voce acertou a palavra
+          ;    )
+          )
+        (+ aux 0) ;ERROU
     ))
     (if (= aux 1)
         (inicia_frame_forca_acertou)
@@ -380,3 +393,24 @@
                                          (efetuou_chute valor-digitado)
                                          ) 
                                          ]))
+
+;=============================================================
+;INTERFACE MAIN
+;=============================================================
+(define frame_main (new frame% [label "Introdução"] [width 300] [height 200]))
+
+(define msg-text1-main (new message% [parent frame_main] [label "--==Essa história se passa em 1645 d.c==--"] [stretchable-width #t]))
+(define msg-text2-main (new message% [parent frame_main] [label "O rei ficou maluco, ele está chateado com os niveis de educação do paíz e resolveu intervir da sua própria maneira. "][stretchable-width #t]))
+(define msg-text3-main (new message% [parent frame_main] [label "Todas os seus súditos serão submetidas a testes de lógica de programação em racket e de alfabetismo."][stretchable-width #t]))
+(define msg-text4-main (new message% [parent frame_main] [label "Nesse teste um súdito de cada vez deve: acertar um problema de lógica e em seguida chutar letras para tentar acertar uma palavra."][stretchable-width #t]))
+(define msg-text5-main (new message% [parent frame_main] [label "Se a pessoa errar uma letra ela deve acertar outro problema de lógica para voltar a chutar letras."][stretchable-width #t]))
+(define msg-text6-main (new message% [parent frame_main] [label "Se a pessoa errar 5 letras ela vai para a forca e perde."][stretchable-width #t]))
+(define msg-text7-main (new message% [parent frame_main] [label "A pessoa deve acertar 4 palavras para passar no teste."][stretchable-width #t]))
+(define msg-text8-main (new message% [parent frame_main] [label "As palavras são palavras usadas na linguagem Racket."][stretchable-width #t]))
+
+(define button1-main (new button% [parent frame_main] [label "Entendi! Vamos começar"]
+                            [callback (lambda (button event)
+                                        (send frame_main show #f)
+                                        (proximo_nivel) ;;essa funcao inicia a proxima fase, comaça na 1.1
+                                        )]))
+(send frame_main show #t)
