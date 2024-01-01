@@ -242,13 +242,38 @@
                  (send frame_forca_errou show #f)
                  (proximo_nivel))])) ;CHAMA PROXIMA FASE
 
-(define (inicia_frame_forca_errou) (send frame_forca_errou show #t))  
+(define (inicia_frame_forca_errou) (send frame_forca_errou show #t))
+;=============================================================
+;INTERFACE GANHOU O JOGO
+;=============================================================
+(define frame_ganhou_o_jogo (new frame% [label "Ganhou_o_jogo"] [width 300] [height 200])) ;esse frame aparece quando a pessoa acerta as 4 palavras
+
+(define msg-text1_ganhou_o_jogo (new message% [parent frame_ganhou_o_jogo] [label "Você acertou todas as palavras e passou no teste do rei, parabéns!!"] [stretchable-width #t]))
+(define button_ganhou_o_jogo (new button% [parent frame_ganhou_o_jogo] [label "Ufa"]
+     [callback (lambda (button event)
+                 (send frame_ganhou_o_jogo show #f))])) ;O PROGRAMA TERMINA
+
+(define (inicia_frame_ganhou_o_jogo) (send frame_ganhou_o_jogo show #t))
+;=============================================================
+;INTERFACE VOCE JA CHUTOU ESSA LETRA
+;=============================================================
+(define frame_ja_chutou_essa_letra (new frame% [label "Ja_chutou"] [width 300] [height 200])) ;esse frame aparece quando a pessoa acerta as 4 palavras
+
+(define msg-text1_ja_chutou_essa_letra (new message% [parent frame_ja_chutou_essa_letra] [label "Você já tinha chutado essa letra, chute outra!"] [stretchable-width #t]))
+(define button_ja_chutou_essa_letra (new button% [parent frame_ja_chutou_essa_letra] [label "Entendido"]
+     [callback (lambda (button event)
+                 (send frame_ja_chutou_essa_letra show #f)
+                 (send frame_forca show #t)
+                 )]))
+
+(define (inicia_frame_ja_chutou_essa_letra) (send frame_ja_chutou_essa_letra show #t))
 ;=============================================================
 ;SORTEIA PALAVRAS
 ;=============================================================
 (define vetor_nivel4 (vector "define" "lambda" "unless" "provide" "require" "module" "include" "vector" "struct"))
 (define palavra_nivel4 (vector-ref vetor_nivel4 (random 9)))
 (define string_nivel4 (make-vector (string-length palavra_nivel4) "_ " ))
+(println palavra_nivel4)
 
 (define vetor_nivel3 (vector "quote" "begin" "while" "unless" "match" "input"))
 (define palavra_nivel3 (vector-ref vetor_nivel3 (random 6)))
@@ -261,6 +286,9 @@
 (define vetor_nivel1 (vector "let" "if" "set" "and" "or" "not" "for" "do" "key"))
 (define palavra_nivel1 (vector-ref vetor_nivel1 (random 9)))
 (define string_nivel1 (make-vector (string-length palavra_nivel1) "_ " ))
+;=============================================================
+;CONTROLADOR 
+;=============================================================
 
 ;=============================================================
 ;CONTROLADOR FORCA
@@ -281,8 +309,9 @@
     #t
  )
 
-(define (forca vector-str vidas chutes);essa funcao continua o jogo
-  (send msg-text9-forca set-label (string-join (vector->list vector-str) ""))
+;vector-str é a palavra que fica em baixo da forca, tipo: "a b a c a _ e"
+(define (forca vector-str vidas chutes);essa funcao continua o jogo da forca
+  (send msg-text9-forca set-label (string-join (vector->list vector-str) "")) 
   (send msg-text11-forca set-label chutes)
   (cond
   [(= vidas 0) (send frame_forca show #t)]
@@ -313,30 +342,40 @@
    (inicia_frame_perdeu_jogo chutes)])
   )
 
-(define aux 0) ;eu nao encontrei outra maneira de fazer isso sem essa variavel auxiliar
+(define letras_chutadas empty)
+(define aux 0) ;eu nao encontrei outra maneira de fazer isso sem essa variavel auxiliar, ja que o 'for' tem que percorrer a palavra interira antes da funcao retornar alguma coisa
 (define (efetuou_chute letra)
-  (set! chutes (string-append chutes " " letra))
-  (set! aux 0)
-  (for/list ([i (in-range (string-length palavra_nivel4))])
-    (if (string=? (substring palavra_nivel4 i (+ i 1)) letra)
-        (begin    ;ACERTOU
-          (set! aux 1)
+  (set! aux 0) ;se aux = 0 o usuario errou a letra
+  (if (member (string-downcase letra) letras_chutadas)
+  (set! aux 3) ;se aux = 3 significa que o usuario ja chutou essa palavra
+  (begin
+    (set! chutes (string-append chutes " " (string-downcase letra)))
+    (set! letras_chutadas (cons (string-downcase letra) letras_chutadas))
+    (for/list ([i (in-range (string-length palavra_nivel4))])
+      (when (string=? (substring palavra_nivel4 i (+ i 1)) (string-downcase letra))
+        (begin 
+          (set! aux 1) ;se aux = 0 o usuario acertou a letra
           (set! quantidade_letras_acertadas (+ quantidade_letras_acertadas 1))
-          (vector-set! string_nivel4 i (string-append letra " "))
-          ;(if (= (string-length palavra_nivel4) quantidade_letras_acertadas)
-              ;(inicia_proximo_nivel)
-              ;interface voce acertou a palavra
-          ;    )
+          (vector-set! string_nivel4 i (string-append (string-downcase letra) " "))
+          (when (= (string-length palavra_nivel4) quantidade_letras_acertadas)
+             (set! aux 2) ;se aux = 2 significa que o usuario terminou de acertar todas as letras
+             )
           )
-        (+ aux 0) ;ERROU
-    ))
-    (if (= aux 1)
-        (inicia_frame_forca_acertou)
-        (begin
-          (set! vidas (+ vidas 1))
-          (inicia_frame_forca_errou)
-          )
+        )
+      )
+    )
   )
+  (cond
+    [(= aux 0)
+     (set! vidas (+ vidas 1))
+     (inicia_frame_forca_errou)]
+    [(= aux 1)
+     (inicia_frame_forca_acertou)]
+    [(= aux 2)
+     (inicia_frame_ganhou_o_jogo)]
+    [(= aux 3)
+     (inicia_frame_ja_chutou_essa_letra)]
+     )
 )
 ;=============================================================
 ;INTERFACE PERDEU JOGO
