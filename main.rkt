@@ -6,28 +6,28 @@
 
 (define frame_nivel_3.5 (new frame% [label "Nível 3.5"] [width 300] [height 200]))
 
-(define msg-text-3.5 (new message% [parent frame_nivel_3.5] [label "Qual é a informação verdadeira sobre a linguagem Racket?"] [stretchable-width #t]))
+(define msg-text-3.5 (new message% [parent frame_nivel_3.5] [label "Determine a afirmação correta sobre as aplicações em Racket:"] [stretchable-width #t]))
 (define msg-text2-3.5 (new message% [parent frame_nivel_3.5] [label ""] [stretchable-width #t]))
 
-(define button1-3.5 (new button% [parent frame_nivel_3.5] [label "Racket não suporta orientação a objetos"]
+(define button1-3.5 (new button% [parent frame_nivel_3.5] [label "Racket é principalmente usada para desenvolvimento de jogos."]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.5 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button2-3.5 (new button% [parent frame_nivel_3.5] [label "Racket é comumente uasda em desenvolvimento Web Front-End"]
+(define button2-3.5 (new button% [parent frame_nivel_3.5] [label "Racket é utilizada para programação científica e acadêmica."]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.5 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button3-3.5 (new button% [parent frame_nivel_3.5] [label "Racket é uma linguagem de programação que suporta programação funcional e procedural."]
+(define button3-3.5 (new button% [parent frame_nivel_3.5] [label "Racket é popular para desenvolvimento de aplicativos móveis."]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.5 show #f)
                                         (inicia_forca #t)
                                         )]))
 
-(define button4-3.5 (new button% [parent frame_nivel_3.5] [label " A sintaxe de Racket é baseada em C++."]
+(define button4-3.5 (new button% [parent frame_nivel_3.5] [label "É impossível desenvolver um jogo em Racket"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.5 show #f)
                                         (inicia_forca #f)
@@ -38,66 +38,68 @@
 ;=============================================================
 ;INTERFACE 3.4
 ;=============================================================
-
 (define frame_nivel_3.4 (new frame% [label "Nível 3.4"] [width 300] [height 200]))
 
-(define msg-text-3.4 (new message% [parent frame_nivel_3.4] [label "Qual dessas expressões sempre é verdadeira?"] [stretchable-width #t]))
-(define msg-text2-3.4 (new message% [parent frame_nivel_3.4] [label ""] [stretchable-width #t]))
+(define msg-text-3.4 (new message% [parent frame_nivel_3.4] [label "Qual seria a expressão da 5° linha para que  a função (fibonacci n) retornasse o nésimo número da sequencia de fibonacci"] [stretchable-width #t]))
+(define msg-text2-3.4 (new message% [parent frame_nivel_3.4] [label "1-  (define (fibonacci n)"] [stretchable-width #t]))
+(define msg-text3-3.4 (new message% [parent frame_nivel_3.4] [label "2-    (cond"] [stretchable-width #t]))
+(define msg-text4-3.4 (new message% [parent frame_nivel_3.4] [label "3-     ((= n 0) 0)"] [stretchable-width #t]))
+(define msg-text5-3.4 (new message% [parent frame_nivel_3.4] [label "4-     ((= n 1) 1)"] [stretchable-width #t]))
+(define msg-text6-3.4 (new message% [parent frame_nivel_3.4] [label "5-     "] [stretchable-width #t]))
 
-(define button1-3.4 (new button% [parent frame_nivel_3.4] [label "(or #f #f)"]
+(define button1-3.4 (new button% [parent frame_nivel_3.4] [label "((= n 2) 2)))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.4 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button2-3.4 (new button% [parent frame_nivel_3.4] [label "(= 44 125)"]
-                            [callback (lambda (button event)
-                                       (send frame_nivel_3.4 show #f)
-                                        (inicia_forca #f)
-                                        )]))
-
-(define button3-3.4 (new button% [parent frame_nivel_3.4] [label "(= biscoito bolacha)  "]
-                            [callback (lambda (button event)
-                                       (send frame_nivel_3.4 show #f)
-                                        (inicia_forca #f)
-                                        )]))
-
-(define button4-3.4 (new button% [parent frame_nivel_3.4] [label "(nand #f #t)"]
+(define button2-3.4 (new button% [parent frame_nivel_3.4] [label "(else (+ (fibonacci (- n 1)) (fibonacci (- n 2))))))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.4 show #f)
                                         (inicia_forca #t)
                                         )]))
 
-(define (inicia_nivel_3.4) (send frame_nivel_3.4 show #t))
+(define button3-3.4 (new button% [parent frame_nivel_3.4] [label "(else ((fibonacci (/ n 1)) + (fibonacci (* n 2))))))"]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_3.4 show #f)
+                                        (inicia_forca #f)
+                                        )]))
 
+(define button4-3.4 (new button% [parent frame_nivel_3.4] [label "(else return {(fibonacci (- n 1)) and (fibonacci (- n 2)))}))"]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_3.4 show #f)
+                                        (inicia_forca #f)
+                                        )]))
+
+(define (inicia_nivel_3.4) (send frame_nivel_3.4 show #t))
 ;=============================================================
 ;INTERFACE 3.3
 ;=============================================================
 
 (define frame_nivel_3.3 (new frame% [label "Nível 3.3"] [width 300] [height 200]))
 
-(define msg-text-3.3 (new message% [parent frame_nivel_3.3] [label "Como a seguinte expressão deveria ser escrita em Racket? "] [stretchable-width #t]))
-(define msg-text2-3.3 (new message% [parent frame_nivel_3.3] [label " 5 + (2 - 3 ) + 4 * (2 - 7)"] [stretchable-width #t]))
+(define msg-text-3.3 (new message% [parent frame_nivel_3.3] [label "Selecione a opção correta para imprimir os quadrados dos números de 1 a 4 em Racket:"] [stretchable-width #t]))
+(define msg-text2-3.3 (new message% [parent frame_nivel_3.3] [label ""] [stretchable-width #t]))
 
-(define button1-3.3 (new button% [parent frame_nivel_3.3] [label " (+(+ 5 (- 2 3))( * 4 (- 2 7)))"]
+(define button1-3.3 (new button% [parent frame_nivel_3.3] [label "(while (<= i 4) (display (expt i 2)))"]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_3.3 show #f)
+                                        (inicia_forca #f)
+                                        )]))
+
+(define button2-3.3 (new button% [parent frame_nivel_3.3] [label "(for ([i (in-range 1 5)]) (display (* i i)))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.3 show #f)
                                         (inicia_forca #t)
                                         )]))
 
-(define button2-3.3 (new button% [parent frame_nivel_3.3] [label "(5 + (2 - 3 ) + 4 * (2 - 7))"]
+(define button3-3.3 (new button% [parent frame_nivel_3.3] [label "(loop (from 1 to 4) (print (square i)))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.3 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button3-3.3 (new button% [parent frame_nivel_3.3] [label "(*(*(+ (+ 5 (- 2 3)) 4) 2 )-7)  "]
-                            [callback (lambda (button event)
-                                       (send frame_nivel_3.3 show #f)
-                                        (inicia_forca #f)
-                                        )]))
-
-(define button4-3.3 (new button% [parent frame_nivel_3.3] [label "(nao + (sei, - tenha ) + piedade * milorde)"]
+(define button4-3.3 (new button% [parent frame_nivel_3.3] [label "(print-squares 1 4)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.3 show #f)
                                         (inicia_forca #f)
@@ -116,25 +118,25 @@
 (define msg-text-3.2 (new message% [parent frame_nivel_3.2] [label "Aperte no botão que contenha a forma correta de definir uma funcao que multiplica x e y: "] [stretchable-width #t]))
 (define msg-text2-3.2 (new message% [parent frame_nivel_3.2] [label " "] [stretchable-width #t]))
 
-(define button1-3.2 (new button% [parent frame_nivel_3.2] [label "(define  (multiplica  x  y)  (*  x  y))"]
+(define button1-3.2 (new button% [parent frame_nivel_3.2] [label "(for ([i (in-range 1 11)]) (set! resultado (+ resultado i)))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.2 show #f)
                                         (inicia_forca #t)
                                         )]))
 
-(define button2-3.2 (new button% [parent frame_nivel_3.2] [label "(define  (multiplica)  (x  y)  (x  *  y)"]
+(define button2-3.2 (new button% [parent frame_nivel_3.2] [label "(calculate-add 1 10)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.2 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button3-3.2 (new button% [parent frame_nivel_3.2] [label "(define  (multiplica float x, float y)  (x  *  y)"]
+(define button3-3.2 (new button% [parent frame_nivel_3.2] [label "(add (range 1 10))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.2 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button4-3.2 (new button% [parent frame_nivel_3.2] [label "(define  (multiplica  x  y)  (**  x  y)"]
+(define button4-3.2 (new button% [parent frame_nivel_3.2] [label "(while (<= i 10) (add i))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.2 show #f)
                                         (inicia_forca #f)
@@ -151,28 +153,28 @@
 (define msg-text-3.1 (new message% [parent frame_nivel_3.1] [label "Aperte no botão que contenha a forma correta de somar 4 e 5: "] [stretchable-width #t]))
 (define msg-text2-3.1 (new message% [parent frame_nivel_3.1] [label " "] [stretchable-width #t]))
 
-(define button1-3.1 (new button% [parent frame_nivel_3.1] [label "( 4  +  5 )"]
+(define button1-3.1 (new button% [parent frame_nivel_3.1] [label "(while (<= i 5) (display i))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.1 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button2-3.1 (new button% [parent frame_nivel_3.1] [label "add(4 , 5)"]
+(define button2-3.1 (new button% [parent frame_nivel_3.1] [label "(print-numbers 1 5)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.1 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button3-3.1 (new button% [parent frame_nivel_3.1] [label "( +  4  5)"]
+(define button3-3.1 (new button% [parent frame_nivel_3.1] [label "(loop (from 1 to 5) (print i))"]
                             [callback (lambda (button event)
                                         (send frame_nivel_3.1 show #f)
-                                        (inicia_forca #t)
+                                        (inicia_forca #f)
                                         )]))
 
-(define button4-3.1 (new button% [parent frame_nivel_3.1] [label "(add  4  5)"]
+(define button4-3.1 (new button% [parent frame_nivel_3.1] [label "(for ([i (in-range 1 6)]) (display i))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_3.1 show #f)
-                                        (inicia_forca #f)
+                                        (inicia_forca #t)
                                         )]))
 
 
@@ -192,7 +194,7 @@
                                         (inicia_forca #f)
                                         )]))
 
-(define button2-2.5 (new button% [parent frame_nivel_2.5] [label "Racket é comumente uasda em desenvolvimento Web Front-End"]
+(define button2-2.5 (new button% [parent frame_nivel_2.5] [label "Racket é comumente usada em desenvolvimento Web Front-End"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.5 show #f)
                                         (inicia_forca #f)
@@ -204,7 +206,7 @@
                                         (inicia_forca #t)
                                         )]))
 
-(define button4-2.5 (new button% [parent frame_nivel_2.5] [label " A sintaxe de Racket é baseada em C++."]
+(define button4-2.5 (new button% [parent frame_nivel_2.5] [label" A sintaxe de Racket é baseada em C++."]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.5 show #f)
                                         (inicia_forca #f)
@@ -218,28 +220,28 @@
 
 (define frame_nivel_2.4 (new frame% [label "Nível 2.4"] [width 300] [height 200]))
 
-(define msg-text-2.4 (new message% [parent frame_nivel_2.4] [label "Qual dessas expressões sempre é verdadeira?"] [stretchable-width #t]))
+(define msg-text-2.4 (new message% [parent frame_nivel_2.4] [label "Escolha a alternativa ERRADA para verificar se um número é positivo, negativo ou zero em Racket:"] [stretchable-width #t]))
 (define msg-text2-2.4 (new message% [parent frame_nivel_2.4] [label ""] [stretchable-width #t]))
 
-(define button1-2.4 (new button% [parent frame_nivel_2.4] [label "(or #f #f)"]
+(define button1-2.4 (new button% [parent frame_nivel_2.4] [label "(cond [(> num 0) 'positivo] [(< num 0) 'negativo] [else 'zero])"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.4 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button2-2.4 (new button% [parent frame_nivel_2.4] [label "(= 44 125)"]
+(define button2-2.4 (new button% [parent frame_nivel_2.4] [label "(when (> num 0) 'positivo)(when (< num 0) 'negativo)(when (= num 0) 'zero)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.4 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button3-2.4 (new button% [parent frame_nivel_2.4] [label "(= biscoito bolacha)  "]
+(define button3-2.4 (new button% [parent frame_nivel_2.4] [label "(if (> num 0) 'positivo (if (< num 0) 'negativo 'zero)) "]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.4 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button4-2.4 (new button% [parent frame_nivel_2.4] [label "(nand #f #t)"]
+(define button4-2.4 (new button% [parent frame_nivel_2.4] [label "(num > 0 ? 'positive : (num < 0 ? 'negative : 'zero)))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.4 show #f)
                                         (inicia_forca #t)
@@ -253,28 +255,28 @@
 
 (define frame_nivel_2.3 (new frame% [label "Nível 2.3"] [width 300] [height 200]))
 
-(define msg-text-2.3 (new message% [parent frame_nivel_2.3] [label "Como a seguinte expressão deveria ser escrita em Racket? "] [stretchable-width #t]))
-(define msg-text2-2.3 (new message% [parent frame_nivel_2.3] [label " 5 + (2 - 3 ) + 4 * (2 - 7)"] [stretchable-width #t]))
+(define msg-text-2.3 (new message% [parent frame_nivel_2.3] [label "Escolha a expressão correta para determinar se o número num está entre 10 e 20 em Racket: "] [stretchable-width #t]))
+(define msg-text2-2.3 (new message% [parent frame_nivel_2.3] [label ""] [stretchable-width #t]))
 
-(define button1-2.3 (new button% [parent frame_nivel_2.3] [label " (+(+ 5 (- 2 3))( * 4 (- 2 7)))"]
+(define button1-2.3 (new button% [parent frame_nivel_2.3] [label "(between-10-and-20 num"]
+                            [callback (lambda (button event)
+                                       (send frame_nivel_2.3 show #f)
+                                        (inicia_forca #f)
+                                        )]))
+
+(define button2-2.3 (new button% [parent frame_nivel_2.3] [label "(if (and (>= num 10) (<= num 20)) #t #f))"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.3 show #f)
                                         (inicia_forca #t)
                                         )]))
 
-(define button2-2.3 (new button% [parent frame_nivel_2.3] [label "(5 + (2 - 3 ) + 4 * (2 - 7))"]
+(define button3-2.3 (new button% [parent frame_nivel_2.3] [label "(num >= 10 && num <= 20)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.3 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button3-2.3 (new button% [parent frame_nivel_2.3] [label "(*(*(+ (+ 5 (- 2 3)) 4) 2 )-7)  "]
-                            [callback (lambda (button event)
-                                       (send frame_nivel_2.3 show #f)
-                                        (inicia_forca #f)
-                                        )]))
-
-(define button4-2.3 (new button% [parent frame_nivel_2.3] [label "(nao + (sei, - tenha ) + piedade * milorde)"]
+(define button4-2.3 (new button% [parent frame_nivel_2.3] [label "(if (num > 11 && num < 20) #t #t)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.3 show #f)
                                         (inicia_forca #f)
@@ -290,31 +292,31 @@
 
 (define frame_nivel_2.2 (new frame% [label "Nível 2.2"] [width 300] [height 200]))
 
-(define msg-text-2.2 (new message% [parent frame_nivel_2.2] [label "Aperte no botão que contenha a forma correta de definir uma funcao que multiplica x e y: "] [stretchable-width #t]))
+(define msg-text-2.2 (new message% [parent frame_nivel_2.2] [label "Determine a expressão adequada para verificar se o número num é par em Racket:"] [stretchable-width #t]))
 (define msg-text2-2.2 (new message% [parent frame_nivel_2.2] [label " "] [stretchable-width #t]))
 
-(define button1-2.2 (new button% [parent frame_nivel_2.2] [label "(define  (multiplica  x  y)  (*  x  y))"]
+(define button1-2.2 (new button% [parent frame_nivel_2.2] [label "(=  (/  num  2) 0)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.2 show #f)
                                         (inicia_forca #t)
                                         )]))
 
-(define button2-2.2 (new button% [parent frame_nivel_2.2] [label "(define  (multiplica)  (x  y)  (x  *  y)"]
+(define button2-2.2 (new button% [parent frame_nivel_2.2] [label "(check-parity! num)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.2 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button3-2.2 (new button% [parent frame_nivel_2.2] [label "(define  (multiplica float x, float y)  (x  *  y)"]
+(define button3-2.2 (new button% [parent frame_nivel_2.2] [label "(par? num) "]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.2 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button4-2.2 (new button% [parent frame_nivel_2.2] [label "(define  (multiplica  x  y)  (**  x  y)"]
+(define button4-2.2 (new button% [parent frame_nivel_2.2] [label "(if  (even? num)  #t  #f)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.2 show #f)
-                                        (inicia_forca #f)
+                                        (inicia_forca #t)
                                         )]))
 
 
@@ -325,28 +327,28 @@
 ;=============================================================
 (define frame_nivel_2.1 (new frame% [label "Nível 2.1"] [width 300] [height 200]))
 
-(define msg-text-2.1 (new message% [parent frame_nivel_2.1] [label "Aperte no botão que contenha a forma correta de somar 4 e 5: "] [stretchable-width #t]))
+(define msg-text-2.1 (new message% [parent frame_nivel_2.1] [label "Aperte no botão que contenha a opção correta para verificar se o número num é positivo em Racket: "] [stretchable-width #t]))
 (define msg-text2-2.1 (new message% [parent frame_nivel_2.1] [label " "] [stretchable-width #t]))
 
-(define button1-2.1 (new button% [parent frame_nivel_2.1] [label "( 4  +  5 )"]
+(define button1-2.1 (new button% [parent frame_nivel_2.1] [label "(if (> num 0) #f #f)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.1 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button2-2.1 (new button% [parent frame_nivel_2.1] [label "add(4 , 5)"]
+(define button2-2.1 (new button% [parent frame_nivel_2.1] [label "(positive? num)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.1 show #f)
-                                        (inicia_forca #f)
-                                        )]))
-
-(define button3-2.1 (new button% [parent frame_nivel_2.1] [label "( +  4  5)"]
-                            [callback (lambda (button event)
-                                        (send frame_nivel_2.1 show #f)
                                         (inicia_forca #t)
                                         )]))
 
-(define button4-2.1 (new button% [parent frame_nivel_2.1] [label "(add  4  5)"]
+(define button3-2.1 (new button% [parent frame_nivel_2.1] [label "(num > 0 ? true : false)"]
+                            [callback (lambda (button event)
+                                        (send frame_nivel_2.1 show #f)
+                                        (inicia_forca #f)
+                                        )]))
+
+(define button4-2.1 (new button% [parent frame_nivel_2.1] [label "(num > 0)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_2.1 show #f)
                                         (inicia_forca #f)
@@ -361,28 +363,28 @@
 
 (define frame_nivel_1.5 (new frame% [label "Nível 1.5"] [width 300] [height 200]))
 
-(define msg-text-1.5 (new message% [parent frame_nivel_1.5] [label "Qual é a informação verdadeira sobre a linguagem Racket?"] [stretchable-width #t]))
+(define msg-text-1.5 (new message% [parent frame_nivel_1.5] [label "Escolha a forma certa de calcular a raíz quadrada de 25: "] [stretchable-width #t]))
 (define msg-text2-1.5 (new message% [parent frame_nivel_1.5] [label ""] [stretchable-width #t]))
 
-(define button1-1.5 (new button% [parent frame_nivel_1.5] [label "Racket não suporta orientação a objetos"]
+(define button1-1.5 (new button% [parent frame_nivel_1.5] [label "√25"]
                             [callback (lambda (button event)
                                        (send frame_nivel_1.5 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button2-1.5 (new button% [parent frame_nivel_1.5] [label "Racket é comumente uasda em desenvolvimento Web Front-End"]
+(define button2-1.5 (new button% [parent frame_nivel_1.5] [label "(sqrt 25)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_1.5 show #f)
                                         (inicia_forca #f)
                                         )]))
 
-(define button3-1.5 (new button% [parent frame_nivel_1.5] [label "Racket é uma linguagem de programação que suporta programação funcional e procedural."]
+(define button3-1.5 (new button% [parent frame_nivel_1.5] [label "(25 sqrt)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_1.5 show #f)
                                         (inicia_forca #t)
                                         )]))
 
-(define button4-1.5 (new button% [parent frame_nivel_1.5] [label " A sintaxe de Racket é baseada em C++."]
+(define button4-1.5 (new button% [parent frame_nivel_1.5] [label "(root 25 2)"]
                             [callback (lambda (button event)
                                        (send frame_nivel_1.5 show #f)
                                         (inicia_forca #f)
