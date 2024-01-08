@@ -225,14 +225,14 @@
 (define msg-text-3.1
   (new message%
        [parent frame_nivel_3.1]
-       [label "Aperte no botão que contenha a forma correta de somar 4 e 5: "]
+       [label "Qual das opções define uma lista com os elementos 3, 7 e 8? "]
        [stretchable-width #t]))
 (define msg-text2-3.1 (new message% [parent frame_nivel_3.1] [label " "] [stretchable-width #t]))
 
 (define button1-3.1
   (new button%
        [parent frame_nivel_3.1]
-       [label "(while (<= i 5) (display i))"]
+       [label "(define lst (const 3 7 8 empty))"]
        [callback
         (lambda (button event)
           (send frame_nivel_3.1 show #f)
@@ -241,16 +241,16 @@
 (define button2-3.1
   (new button%
        [parent frame_nivel_3.1]
-       [label "(print-numbers 1 5)"]
+       [label "(define lst (cons 8 (cons 7 (cons 3 empty))))"]
        [callback
         (lambda (button event)
           (send frame_nivel_3.1 show #f)
-          (inicia_forca #f))]))
+          (inicia_forca #t))]))
 
 (define button3-3.1
   (new button%
        [parent frame_nivel_3.1]
-       [label "(loop (from 1 to 5) (print i))"]
+       [label "(define lst (cons 3 7 8 empty))"]
        [callback
         (lambda (button event)
           (send frame_nivel_3.1 show #f)
@@ -259,11 +259,11 @@
 (define button4-3.1
   (new button%
        [parent frame_nivel_3.1]
-       [label "(for ([i (in-range 1 6)]) (display i))"]
+       [label "(list (cons 8 (cons 7 (cons 3 empty))))"]
        [callback
         (lambda (button event)
           (send frame_nivel_3.1 show #f)
-          (inicia_forca #t))]))
+          (inicia_forca #f))]))
 
 (define (inicia_nivel_3.1)
   (send frame_nivel_3.1 show #t))
