@@ -1154,7 +1154,7 @@
 (define msg-text2_5-perdeu-jogo
   (new message%
        [parent frame_perdeu_jogo]
-       [label (string-append "A palavra era: " palavra_atual)]
+       [label (string-append "A palavra era: ")]
        [stretchable-width #t]))
 (define msg-text3-perdeu-jogo
   (new message% [parent frame_perdeu_jogo] [label " ____"] [stretchable-width #t]))
@@ -1169,10 +1169,7 @@
 (define msg-text8-perdeu-jogo
   (new message% [parent frame_perdeu_jogo] [label "|"] [stretchable-width #t]))
 (define msg-text9-perdeu-jogo
-  (new message%
-       [parent frame_perdeu_jogo]
-       [label (string-join (vector->list vetor-string-palavra-atual) "")]
-       [stretchable-width #t])) ;AAAAAAAAAAAAAAAAAAAAA
+  (new message% [parent frame_perdeu_jogo] [label (string-join (vector->list vetor-string-palavra-atual) "")] [stretchable-width #t]))
 (define msg-text10-perdeu-jogo
   (new message% [parent frame_perdeu_jogo] [label ""] [stretchable-width #t]))
 (define msg-text11-perdeu-jogo
@@ -1188,7 +1185,11 @@
 
 (define (inicia_frame_perdeu_jogo)
   (send frame_perdeu_jogo show #t)
-  (send msg-text11-perdeu-jogo set-label chutes)) ;isso pose ser feito de maneira dinâmica
+
+  (send msg-text2_5-perdeu-jogo set-label (string-append "A palavra era: " palavra_atual))
+  (send msg-text9-perdeu-jogo set-label (string-join (vector->list vetor-string-palavra-atual) ""))
+  (send msg-text11-perdeu-jogo set-label chutes))
+
 ;=============================================================
 ;INTERFACE FORCA
 ;=============================================================
