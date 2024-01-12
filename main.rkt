@@ -1,8 +1,32 @@
-;;Alunos: Gabriel Bitdinger Medeiros RA: 118542
-;;        Amanda
+
+;=============================================================
+;;Paradigmas de Programação Lógica e Funcional
+;;Professor: Wagner Igarashi
+;;Alunos: Amanda Helena Viscovini 
+;;        Gabriel Bitdinger Medeiros RA: 118542
+;=============================================================
+
+;================Jogo da Forca em Racket =====================
+;O trabalho consiste num jogo de forca associado a um quiz
+;de perguntas sobre a linguagem Racket.
+;O jogador deve chutar uma letra por vez. Caso acerte, pode
+;chutar a próxima. Caso erre, perde uma vida e uma pergunta
+;do quiz é exibida.
+;Todas as palavras do jogo são palavras reservadas da linguagem Racket.
+;As perguntas do quiz são sobre a linguagem Racket e o 
+;jogador deve escolher a alternativa correta,e se errar, 
+;perde mais uma vida. Se acertar, não perde vidas e tem o 
+;direito de chutar mais uma letra.
+;O jogo possuí 3 níveis de dificuldade, e o jogador possui 
+;6 vidas para cada nível, representadas pelo bonequinho na forca.
+;Ao completar um nível, o próximo é iniciado. 
+;Cada um dos níveis tem variações, e as palavras são sorteadas aleatoriamente. 
 
 #lang racket
 (require racket/gui/base)
+
+;; Definição de cada uma das perguntas do quiz em cada nível:
+
 ;=============================================================
 ;INTERFACE 3.5
 ;=============================================================
@@ -799,11 +823,12 @@
 ;=============================================================
 ;INTERFACE ACERTOU nivel
 ;=============================================================
+; Frame que aparece quando o jogador acerta uma pergunta
 (define frame_acertou_nivel
   (new frame%
        [label "Forca_acertou_nivel"]
        [width 300]
-       [height 200])) ;esse frame aparece quando a pessoa perde
+       [height 200]))
 
 (define msg-text1_acertou_nivel
   (new message%
@@ -824,11 +849,12 @@
 ;=============================================================
 ;INTERFACE ERROU nivel
 ;=============================================================
+; Frame que aparece quando o jogador erra uma pergunta
 (define frame_errou_nivel
   (new frame%
        [label "Fase_perdeu_nivel"]
        [width 300]
-       [height 200])) ;esse frame aparece quando a pessoa perde uma fase
+       [height 200]))
 
 (define msg-text1_perdeu_nivel
   (new message%
@@ -849,11 +875,12 @@
 ;=============================================================
 ;INTERFACE ACERTOU LETRA
 ;=============================================================
+; Frame que aparece quando o jogador acerta uma letra da palavra
 (define frame_forca_acertou
   (new frame%
        [label "Forca_acertou"]
        [width 300]
-       [height 200])) ;esse frame aparece quando a pessoa perde
+       [height 200]))
 
 (define msg-text1_acertou
   (new message%
@@ -874,11 +901,12 @@
 ;=============================================================
 ;INTERFACE ERROU LETRA
 ;=============================================================
+; Frame que aparece quando o jogador erra uma letra da palavra
 (define frame_forca_errou
   (new frame%
        [label "Forca_perdeu"]
        [width 300]
-       [height 200])) ;esse frame aparece quando a pessoa perde
+       [height 200]))
 
 (define msg-text1_perdeu
   (new message%
@@ -899,7 +927,7 @@
 ;=============================================================
 ;INTERFACE PASSOU DE FASE
 ;=============================================================
-;Frame que aparece quando uma palavra é acertada
+;Frame que aparece quando uma palavra é acertada, e o nível é vencido
 (define frame_passou_de_fase
   (new frame%
        [label "Passou de fase"]
@@ -982,21 +1010,24 @@
 ;=============================================================
 ;SORTEIA PALAVRAS
 ;=============================================================
-;Função que define as palavras a serem sorteadas em cada nível 
-
+;Define as palavras a serem sorteadas no nível
 (define vetor_nivel3
   (vector "unless" "define" "lambda" "provide" "require" "module" "include" "vector" "struct"))
+;Sorteia uma palavra
 (define palavra_nivel3 (vector-ref vetor_nivel3 (random 9)))
+;Usado para exibir o tamanho da palavra sorteada em baixo da forca
 (define vetor-string-palavra3 (make-vector (string-length palavra_nivel3) "_ "))
-
+;Repete o processo para os níveis 1 e 2
 (define vetor_nivel2 (vector "cond" "when" "case" "while" "begin" "match" "input"))
 (define palavra_nivel2 (vector-ref vetor_nivel2 (random 7)))
 (define vetor-string-palavra2 (make-vector (string-length palavra_nivel2) "_ "))
-
 (define vetor_nivel1 (vector "let" "set" "and" "not" "for" "key" "else"))
+;O nível 1 é inicalizado já na variável palavra_atual, que será usada para controlar 
+;os níveis do jogo posteriormente.
 (define palavra_atual (vector-ref vetor_nivel1 (random 7)))
 (define vetor-string-palavra-atual (make-vector (string-length palavra_atual) "_ "))
-
+;Insere todas as palavras sorteadas em uma lista, que também será usada para controlar 
+;os níveis do jogo posteriormente.
 (define lista_palavras (list palavra_nivel2 palavra_nivel3))
 (define vetor-string_palavras (list vetor-string-palavra2 vetor-string-palavra3))
 ;=============================================================
@@ -1027,6 +1058,7 @@
 ;CONTROLADOR FASE
 ;=============================================================
 (define fase 0)
+;Função que percorre as listas de palavras e passa para o próximo nível.
 (define (proxima_palavra)
   (set! palavra_atual (first lista_palavras))
   (set! lista_palavras (rest lista_palavras))
