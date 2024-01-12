@@ -1,3 +1,6 @@
+;;Alunos: Gabriel Bitdinger Medeiros RA: 118542
+;;        Amanda
+
 #lang racket
 (require racket/gui/base)
 ;=============================================================
@@ -174,7 +177,7 @@
   (new message%
        [parent frame_nivel_3.2]
        [label
-        "Aperte no botão que contenha a forma correta de definir uma funcao que multiplica x e y: "]
+        "Aperte no botão que contenha uma forma correta de calcular a soma de todos os números de 1 até 10"]
        [stretchable-width #t]))
 (define msg-text2-3.2 (new message% [parent frame_nivel_3.2] [label " "] [stretchable-width #t]))
 
@@ -896,11 +899,12 @@
 ;=============================================================
 ;INTERFACE PASSOU DE FASE
 ;=============================================================
+;Frame que aparece quando uma palavra é acertada
 (define frame_passou_de_fase
   (new frame%
        [label "Passou de fase"]
        [width 300]
-       [height 200])) ;esse frame aparece quando a pessoa acerta as 4 palavras
+       [height 200]))
 
 (define msg-text1_passou_de_fase
   (new message%
@@ -924,12 +928,12 @@
 ;=============================================================
 ;INTERFACE GANHOU O JOGO
 ;=============================================================
+;Esse frame aparece quando a pessoa acerta as 4 palavras
 (define frame_ganhou_o_jogo
   (new frame%
        [label "Ganhou_o_jogo"]
        [width 300]
-       [height 200])) ;esse frame aparece quando a pessoa acerta as 4 palavras
-
+       [height 200])) 
 (define msg-text1_ganhou_o_jogo
   (new message%
        [parent frame_ganhou_o_jogo]
@@ -952,11 +956,12 @@
 ;=============================================================
 ;INTERFACE VOCE JA CHUTOU ESSA LETRA
 ;=============================================================
+;;Frame que será exibido quando o jogador chuta uma mesma letra pela segunda vez
 (define frame_ja_chutou_essa_letra
   (new frame%
        [label "Ja_chutou"]
        [width 300]
-       [height 200])) ;esse frame aparece quando a pessoa acerta as 4 palavras
+       [height 200]))
 
 (define msg-text1_ja_chutou_essa_letra
   (new message%
@@ -977,6 +982,8 @@
 ;=============================================================
 ;SORTEIA PALAVRAS
 ;=============================================================
+;Função que define as palavras a serem sorteadas em cada nível 
+
 (define vetor_nivel3
   (vector "unless" "define" "lambda" "provide" "require" "module" "include" "vector" "struct"))
 (define palavra_nivel3 (vector-ref vetor_nivel3 (random 9)))
@@ -1245,6 +1252,7 @@
 ;=============================================================
 (define frame_main (new frame% [label "Introdução"] [width 300] [height 200]))
 
+;;Exibir a introdução do jogo
 (define msg-text1-main
   (new message%
        [parent frame_main]
@@ -1293,6 +1301,7 @@
        [label "As palavras são palavras usadas na linguagem Racket."]
        [stretchable-width #t]))
 
+;;Define o botão que chama a função forca
 (define button1-main
   (new button%
        [parent frame_main]
