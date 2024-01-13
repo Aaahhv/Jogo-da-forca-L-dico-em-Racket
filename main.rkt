@@ -26,7 +26,6 @@
 (require racket/gui/base)
 
 ;; Definição de cada uma das perguntas do quiz em cada nível:
-
 ;=============================================================
 ;INTERFACE 3.5
 ;=============================================================
@@ -1095,12 +1094,14 @@
 ;=============================================================
 ;CONTROLADOR FORCA
 ;=============================================================
+;Inicializa os parâmetros da forca
 (define vidas 0)
 (define acertou_palavra #f)
 (define chutes "Letras já chutadas: ")
 (define quantidade_letras_acertadas 0)
 
-(define (inicia_forca acertou) ;;essa funcao é chamada quando um nivel é completado e vai para a forca
+;;essa funcao é chamada quando um nivel é completado e vai para a forca
+(define (inicia_forca acertou) 
   (if (not acertou)
       (begin
         (inicia_frame_errou_nivel)
@@ -1150,8 +1151,8 @@
     [else (inicia_frame_perdeu_jogo)]))
 
 (define letras_chutadas empty)
-(define aux
-  0) ;eu nao encontrei outra maneira de fazer isso sem essa variavel auxiliar, ja que o 'for' tem que percorrer a palavra interira antes da funcao retornar alguma coisa
+;eu nao encontrei outra maneira de fazer isso sem essa variavel auxiliar, ja que o 'for' tem que percorrer a palavra interira antes da funcao retornar alguma coisa
+(define aux 0) 
 (define (efetuou_chute letra)
   (set! aux 0) ;se aux = 0 o usuario errou a letra
   (if (member (string-downcase letra) letras_chutadas)
@@ -1232,6 +1233,7 @@
 ;=============================================================
 ;INTERFACE FORCA
 ;=============================================================
+;Inicializa o frame da forca
 (define frame_forca (new frame% [label "Forca"] [width 300] [height 200]))
 (define valor-digitado #f)
 
@@ -1260,7 +1262,7 @@
 (define msg-text10-forca (new message% [parent frame_forca] [label " "] [stretchable-width #t]))
 (define msg-text11-forca
   (new message% [parent frame_forca] [label "Letras já chutadas:"] [stretchable-width #t]))
-
+;Caixa de texto para inserir a letra
 (define text-box-forca (new text-field% [parent frame_forca] [label ""] [stretchable-width #t]))
 
 (define button-forca
@@ -1343,4 +1345,5 @@
           (send frame_main show #f)
           (forca) ;;essa funcao inicia a forca
           )]))
+;Inicializa a execução do jogo
 (send frame_main show #t)
