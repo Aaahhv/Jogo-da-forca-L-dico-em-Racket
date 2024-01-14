@@ -39,6 +39,8 @@
        [stretchable-width #t]))
 (define msg-text2-3.5 (new message% [parent frame_nivel_3.5] [label ""] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-3.5
   (new button%
        [parent frame_nivel_3.5]
@@ -48,6 +50,8 @@
           (send frame_nivel_3.5 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-3.5
   (new button%
        [parent frame_nivel_3.5]
@@ -55,17 +59,21 @@
        [callback
         (lambda (button event)
           (send frame_nivel_3.5 show #f)
-          (inicia_forca #f))]))
+          (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-3.5
   (new button%
        [parent frame_nivel_3.5]
-       [label "Racket é popular para desenvolvimento de aplicativos móveis."]
+       [label "Racket é a linguagem mais popular para desenvolvimento de aplicativos móveis."]
        [callback
         (lambda (button event)
           (send frame_nivel_3.5 show #f)
-          (inicia_forca #t))]))
+          (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-3.5
   (new button%
        [parent frame_nivel_3.5]
@@ -100,6 +108,8 @@
 (define msg-text6-3.4
   (new message% [parent frame_nivel_3.4] [label "5-     "] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-3.4
   (new button%
        [parent frame_nivel_3.4]
@@ -109,6 +119,8 @@
           (send frame_nivel_3.4 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-3.4
   (new button%
        [parent frame_nivel_3.4]
@@ -118,6 +130,8 @@
           (send frame_nivel_3.4 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-3.4
   (new button%
        [parent frame_nivel_3.4]
@@ -127,6 +141,8 @@
           (send frame_nivel_3.4 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-3.4
   (new button%
        [parent frame_nivel_3.4]
@@ -151,6 +167,8 @@
        [stretchable-width #t]))
 (define msg-text2-3.3 (new message% [parent frame_nivel_3.3] [label ""] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-3.3
   (new button%
        [parent frame_nivel_3.3]
@@ -160,6 +178,8 @@
           (send frame_nivel_3.3 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-3.3
   (new button%
        [parent frame_nivel_3.3]
@@ -169,6 +189,8 @@
           (send frame_nivel_3.3 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-3.3
   (new button%
        [parent frame_nivel_3.3]
@@ -178,6 +200,8 @@
           (send frame_nivel_3.3 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-3.3
   (new button%
        [parent frame_nivel_3.3]
@@ -204,6 +228,8 @@
        [stretchable-width #t]))
 (define msg-text2-3.2 (new message% [parent frame_nivel_3.2] [label " "] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-3.2
   (new button%
        [parent frame_nivel_3.2]
@@ -213,6 +239,8 @@
           (send frame_nivel_3.2 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-3.2
   (new button%
        [parent frame_nivel_3.2]
@@ -222,6 +250,8 @@
           (send frame_nivel_3.2 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-3.2
   (new button%
        [parent frame_nivel_3.2]
@@ -231,6 +261,8 @@
           (send frame_nivel_3.2 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-3.2
   (new button%
        [parent frame_nivel_3.2]
@@ -255,6 +287,8 @@
        [stretchable-width #t]))
 (define msg-text2-3.1 (new message% [parent frame_nivel_3.1] [label " "] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-3.1
   (new button%
        [parent frame_nivel_3.1]
@@ -264,6 +298,8 @@
           (send frame_nivel_3.1 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-3.1
   (new button%
        [parent frame_nivel_3.1]
@@ -273,6 +309,8 @@
           (send frame_nivel_3.1 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-3.1
   (new button%
        [parent frame_nivel_3.1]
@@ -282,6 +320,8 @@
           (send frame_nivel_3.1 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-3.1
   (new button%
        [parent frame_nivel_3.1]
@@ -306,6 +346,8 @@
        [stretchable-width #t]))
 (define msg-text2-2.5 (new message% [parent frame_nivel_2.5] [label ""] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-2.5
   (new button%
        [parent frame_nivel_2.5]
@@ -315,6 +357,8 @@
           (send frame_nivel_2.5 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-2.5
   (new button%
        [parent frame_nivel_2.5]
@@ -324,6 +368,8 @@
           (send frame_nivel_2.5 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-2.5
   (new button%
        [parent frame_nivel_2.5]
@@ -333,6 +379,8 @@
           (send frame_nivel_2.5 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-2.5
   (new button%
        [parent frame_nivel_2.5]
@@ -359,6 +407,8 @@
    [stretchable-width #t]))
 (define msg-text2-2.4 (new message% [parent frame_nivel_2.4] [label ""] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-2.4
   (new button%
        [parent frame_nivel_2.4]
@@ -368,6 +418,8 @@
           (send frame_nivel_2.4 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-2.4
   (new button%
        [parent frame_nivel_2.4]
@@ -377,6 +429,8 @@
           (send frame_nivel_2.4 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-2.4
   (new button%
        [parent frame_nivel_2.4]
@@ -386,6 +440,8 @@
           (send frame_nivel_2.4 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-2.4
   (new button%
        [parent frame_nivel_2.4]
@@ -412,6 +468,8 @@
        [stretchable-width #t]))
 (define msg-text2-2.3 (new message% [parent frame_nivel_2.3] [label ""] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-2.3
   (new button%
        [parent frame_nivel_2.3]
@@ -421,6 +479,8 @@
           (send frame_nivel_2.3 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-2.3
   (new button%
        [parent frame_nivel_2.3]
@@ -430,6 +490,8 @@
           (send frame_nivel_2.3 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-2.3
   (new button%
        [parent frame_nivel_2.3]
@@ -439,6 +501,8 @@
           (send frame_nivel_2.3 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-2.3
   (new button%
        [parent frame_nivel_2.3]
@@ -464,6 +528,8 @@
        [stretchable-width #t]))
 (define msg-text2-2.2 (new message% [parent frame_nivel_2.2] [label " "] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-2.2
   (new button%
        [parent frame_nivel_2.2]
@@ -473,6 +539,8 @@
           (send frame_nivel_2.2 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-2.2
   (new button%
        [parent frame_nivel_2.2]
@@ -482,6 +550,8 @@
           (send frame_nivel_2.2 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-2.2
   (new button%
        [parent frame_nivel_2.2]
@@ -491,6 +561,8 @@
           (send frame_nivel_2.2 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-2.2
   (new button%
        [parent frame_nivel_2.2]
@@ -517,6 +589,8 @@
    [stretchable-width #t]))
 (define msg-text2-2.1 (new message% [parent frame_nivel_2.1] [label " "] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-2.1
   (new button%
        [parent frame_nivel_2.1]
@@ -526,6 +600,8 @@
           (send frame_nivel_2.1 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-2.1
   (new button%
        [parent frame_nivel_2.1]
@@ -535,6 +611,8 @@
           (send frame_nivel_2.1 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-2.1
   (new button%
        [parent frame_nivel_2.1]
@@ -544,6 +622,8 @@
           (send frame_nivel_2.1 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-2.1
   (new button%
        [parent frame_nivel_2.1]
@@ -569,6 +649,8 @@
        [stretchable-width #t]))
 (define msg-text2-1.5 (new message% [parent frame_nivel_1.5] [label ""] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-1.5
   (new button%
        [parent frame_nivel_1.5]
@@ -578,6 +660,8 @@
           (send frame_nivel_1.5 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-1.5
   (new button%
        [parent frame_nivel_1.5]
@@ -587,6 +671,8 @@
           (send frame_nivel_1.5 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-1.5
   (new button%
        [parent frame_nivel_1.5]
@@ -596,6 +682,8 @@
           (send frame_nivel_1.5 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-1.5
   (new button%
        [parent frame_nivel_1.5]
@@ -620,6 +708,8 @@
        [stretchable-width #t]))
 (define msg-text2-1.4 (new message% [parent frame_nivel_1.4] [label ""] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-1.4
   (new button%
        [parent frame_nivel_1.4]
@@ -629,6 +719,8 @@
           (send frame_nivel_1.4 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-1.4
   (new button%
        [parent frame_nivel_1.4]
@@ -638,6 +730,8 @@
           (send frame_nivel_1.4 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-1.4
   (new button%
        [parent frame_nivel_1.4]
@@ -647,6 +741,8 @@
           (send frame_nivel_1.4 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-1.4
   (new button%
        [parent frame_nivel_1.4]
@@ -676,6 +772,8 @@
        [label " 5 + (2 - 3 ) + 4 * (2 - 7)"]
        [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-1.3
   (new button%
        [parent frame_nivel_1.3]
@@ -685,6 +783,8 @@
           (send frame_nivel_1.3 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-1.3
   (new button%
        [parent frame_nivel_1.3]
@@ -694,6 +794,8 @@
           (send frame_nivel_1.3 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-1.3
   (new button%
        [parent frame_nivel_1.3]
@@ -703,6 +805,8 @@
           (send frame_nivel_1.3 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-1.3
   (new button%
        [parent frame_nivel_1.3]
@@ -729,6 +833,8 @@
        [stretchable-width #t]))
 (define msg-text2-1.2 (new message% [parent frame_nivel_1.2] [label " "] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-1.2
   (new button%
        [parent frame_nivel_1.2]
@@ -738,6 +844,8 @@
           (send frame_nivel_1.2 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-1.2
   (new button%
        [parent frame_nivel_1.2]
@@ -747,6 +855,8 @@
           (send frame_nivel_1.2 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-1.2
   (new button%
        [parent frame_nivel_1.2]
@@ -756,6 +866,8 @@
           (send frame_nivel_1.2 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-1.2
   (new button%
        [parent frame_nivel_1.2]
@@ -780,6 +892,8 @@
        [stretchable-width #t]))
 (define msg-text2-1.1 (new message% [parent frame_nivel_1.1] [label " "] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button1-1.1
   (new button%
        [parent frame_nivel_1.1]
@@ -789,6 +903,8 @@
           (send frame_nivel_1.1 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button2-1.1
   (new button%
        [parent frame_nivel_1.1]
@@ -798,6 +914,8 @@
           (send frame_nivel_1.1 show #f)
           (inicia_forca #f))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button3-1.1
   (new button%
        [parent frame_nivel_1.1]
@@ -807,6 +925,8 @@
           (send frame_nivel_1.1 show #f)
           (inicia_forca #t))]))
 
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button4-1.1
   (new button%
        [parent frame_nivel_1.1]
@@ -834,6 +954,9 @@
        [parent frame_acertou_nivel]
        [label "Parabéns, você acertou essa fase, agora você pode chutar letras!"]
        [stretchable-width #t]))
+
+;;input --> void
+;;define o botão acertou nível, e a ação que será executada quando ele for pressionado (chama a forca)
 (define button_acertou_nivel
   (new button%
        [parent frame_acertou_nivel]
@@ -860,6 +983,9 @@
        [parent frame_errou_nivel]
        [label "Você errou essa fase, você pode chutar letras mas perdeu uma vida."]
        [stretchable-width #t]))
+
+;;input --> void
+;;define o botão acertou nível, e a ação que será executada quando ele for pressionado (chama a forca)
 (define button_perdeu_nivel
   (new button%
        [parent frame_errou_nivel]
@@ -886,6 +1012,9 @@
        [parent frame_forca_acertou]
        [label "Parabéns, você acertou a letra, você pode chutar outra."]
        [stretchable-width #t]))
+
+;;input --> void
+;;define o botão acertou nível, e a ação que será executada quando ele for pressionado (chama a forca)
 (define button_acertou
   (new button%
        [parent frame_forca_acertou]
@@ -912,6 +1041,9 @@
        [parent frame_forca_errou]
        [label "Você errou a letra, passe por outra fase para voltar a chutar letras."]
        [stretchable-width #t]))
+
+;;input --> void
+;;define o botão acertou nível, e a ação que será executada quando ele for pressionado (chama a próxima pergunta)
 (define button_perdeu
   (new button%
        [parent frame_forca_errou]
@@ -919,7 +1051,7 @@
        [callback
         (lambda (button event)
           (send frame_forca_errou show #f)
-          (proximo_nivel))])) ;CHAMA PROXIMA FASE
+          (proximo_nivel))])) ;CHAMA PROXIMA PERGUNTA
 
 (define (inicia_frame_forca_errou)
   (send frame_forca_errou show #t))
@@ -940,6 +1072,9 @@
        [stretchable-width #t]))
 (define msg-text2_passou_de_fase
   (new message% [parent frame_passou_de_fase] [label ""] [stretchable-width #t]))
+
+;;input --> void
+;;define o botão acertou nível, e a ação que será executada quando ele for pressionado (chama a próxima pergunta)
 (define button_passou_de_fase
   (new button%
        [parent frame_passou_de_fase]
@@ -968,6 +1103,8 @@
        [stretchable-width #t]))
 (define msg-text2_ganhou_o_jogo
   (new message% [parent frame_ganhou_o_jogo] [label ""] [stretchable-width #t]))
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
 (define button_ganhou_o_jogo
   (new
    button%
@@ -995,6 +1132,10 @@
        [parent frame_ja_chutou_essa_letra]
        [label "Você já tinha chutado essa letra, chute outra!"]
        [stretchable-width #t]))
+
+;;Input --> Void
+;;Define o botão, e a ação que será executada quando ele for pressionado
+
 (define button_ja_chutou_essa_letra
   (new button%
        [parent frame_ja_chutou_essa_letra]
@@ -1009,13 +1150,17 @@
 ;=============================================================
 ;SORTEIA PALAVRAS
 ;=============================================================
+;Void --> Vetor de Strings
 ;Define as palavras a serem sorteadas no nível
 (define vetor_nivel3
   (vector "unless" "define" "lambda" "provide" "require" "module" "include" "vector" "struct"))
+;Vetor --> String
 ;Sorteia uma palavra
 (define palavra_nivel3 (vector-ref vetor_nivel3 (random 9)))
+;String --> Vetor de Strings
 ;Usado para exibir o tamanho da palavra sorteada em baixo da forca
 (define vetor-string-palavra3 (make-vector (string-length palavra_nivel3) "_ "))
+
 ;Repete o processo para os níveis 1 e 2
 (define vetor_nivel2 (vector "cond" "when" "case" "while" "begin" "match" "input"))
 (define palavra_nivel2 (vector-ref vetor_nivel2 (random 7)))
@@ -1025,6 +1170,8 @@
 ;os níveis do jogo posteriormente.
 (define palavra_atual (vector-ref vetor_nivel1 (random 7)))
 (define vetor-string-palavra-atual (make-vector (string-length palavra_atual) "_ "))
+
+;Strings --> Lista
 ;Insere todas as palavras sorteadas em uma lista, que também será usada para controlar 
 ;os níveis do jogo posteriormente.
 (define lista_palavras (list palavra_nivel2 palavra_nivel3))
@@ -1032,6 +1179,8 @@
 ;=============================================================
 ;CONTROLADOR NIVEL
 ;=============================================================
+;;Métodos --> Lista
+;;Lista de métodos que iniciam os níveis
 (define lista_niveis
   (list inicia_nivel_1.1
         inicia_nivel_1.2
@@ -1049,6 +1198,8 @@
         inicia_nivel_3.4
         inicia_nivel_3.5))
 
+;;Lista --> Lista
+;;Remove o primeiro elemento da lista de níveis, para que o próximo nível seja exibido
 (define (proximo_nivel)
   ((first lista_niveis))
   (set! lista_niveis (rest lista_niveis)))
@@ -1057,6 +1208,7 @@
 ;CONTROLADOR FASE
 ;=============================================================
 (define fase 0)
+;;Lista e Vetor --> Lista e Vetor
 ;Função que percorre as listas de palavras e passa para o próximo nível.
 (define (proxima_palavra)
   (set! palavra_atual (first lista_palavras))
@@ -1064,6 +1216,8 @@
   (set! vetor-string-palavra-atual (first vetor-string_palavras))
   (set! vetor-string_palavras (rest vetor-string_palavras)))
 
+;Void --> Void
+;Altera as listas e chama as funções necessárias para controlar o avanço das fases
 (define (proxima_fase)
   (set! fase (+ fase 1))
   ;recomeca a forca:
@@ -1072,7 +1226,6 @@
   (set! vidas 0)
   (set! letras_chutadas empty)
   (set! chutes "Letras já chutadas: ")
-  ;determina proxima palavra
   (cond
     [(= fase 1)
      (set!
@@ -1100,6 +1253,7 @@
 (define chutes "Letras já chutadas: ")
 (define quantidade_letras_acertadas 0)
 
+;;Boolean e Número --> Número
 ;;essa funcao é chamada quando um nivel é completado e vai para a forca
 (define (inicia_forca acertou) 
   (if (not acertou)
@@ -1108,8 +1262,10 @@
         (set! vidas (+ vidas 1)))
       (inicia_frame_acertou_nivel)))
 
+;;Número --> String
+;;Exibe a forca na tela de acordo com o número de vidas do jogador
 ;vetor-string-palavra-atual é a palavra que fica em baixo da forca, tipo: "a b a c a _ e"
-(define (forca) ;essa funcao continua o jogo da forca
+(define (forca)
   (send msg-text9-forca set-label (string-join (vector->list vetor-string-palavra-atual) ""))
   (send msg-text11-forca set-label chutes)
   (cond
@@ -1151,8 +1307,11 @@
     [else (inicia_frame_perdeu_jogo)]))
 
 (define letras_chutadas empty)
-;eu nao encontrei outra maneira de fazer isso sem essa variavel auxiliar, ja que o 'for' tem que percorrer a palavra interira antes da funcao retornar alguma coisa
 (define aux 0) 
+
+;;String --> Número
+;;Avalia se a letra já foi chutada ou não, se a letra está na palavra ou não, se o jogador acertou todas as letras ou não.
+;;E retorna um número que será usado para chamar a interface correta
 (define (efetuou_chute letra)
   (set! aux 0) ;se aux = 0 o usuario errou a letra
   (if (member (string-downcase letra) letras_chutadas)
@@ -1163,7 +1322,7 @@
         (for/list ([i (in-range (string-length palavra_atual))])
           (when (string=? (substring palavra_atual i (+ i 1)) (string-downcase letra))
             (begin
-              (set! aux 1) ;se aux = 0 o usuario acertou a letra
+              (set! aux 1) ;se aux = 1 o usuario acertou a letra
               (set! quantidade_letras_acertadas (+ quantidade_letras_acertadas 1))
               (vector-set! vetor-string-palavra-atual i (string-append (string-downcase letra) " "))
               (when (= (string-length palavra_atual) quantidade_letras_acertadas)
@@ -1217,6 +1376,8 @@
 (define msg-text12-perdeu-jogo
   (new message% [parent frame_perdeu_jogo] [label ""] [stretchable-width #t]))
 
+;;Input --> Void
+;;Define o botão perdeu_jogo, e sua função de fechar o frame atual
 (define button-perdeu-jogo
   (new button%
        [parent frame_perdeu_jogo]
@@ -1265,6 +1426,8 @@
 ;Caixa de texto para inserir a letra
 (define text-box-forca (new text-field% [parent frame_forca] [label ""] [stretchable-width #t]))
 
+;;Input --> String
+;;Define o botão forca, e captura o valor digitado no text-field
 (define button-forca
   (new
    button%
@@ -1335,6 +1498,7 @@
        [label "As palavras são palavras usadas na linguagem Racket."]
        [stretchable-width #t]))
 
+;;Input --> Void
 ;;Define o botão que chama a função forca
 (define button1-main
   (new button%
