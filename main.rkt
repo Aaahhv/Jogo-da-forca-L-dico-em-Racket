@@ -1198,7 +1198,7 @@
         inicia_nivel_3.4
         inicia_nivel_3.5))
 
-;;Lista --> Lista
+;;Void --> Void
 ;;Remove o primeiro elemento da lista de níveis, para que o próximo nível seja exibido
 (define (proximo_nivel)
   ((first lista_niveis))
@@ -1208,7 +1208,7 @@
 ;CONTROLADOR FASE
 ;=============================================================
 (define fase 0)
-;;Lista e Vetor --> Lista e Vetor
+;;Void --> Void
 ;Função que percorre as listas de palavras e passa para o próximo nível.
 (define (proxima_palavra)
   (set! palavra_atual (first lista_palavras))
@@ -1253,7 +1253,7 @@
 (define chutes "Letras já chutadas: ")
 (define quantidade_letras_acertadas 0)
 
-;;Boolean e Número --> Número
+;;Boolean --> Void
 ;;essa funcao é chamada quando um nivel é completado e vai para a forca
 (define (inicia_forca acertou) 
   (if (not acertou)
@@ -1262,7 +1262,7 @@
         (set! vidas (+ vidas 1)))
       (inicia_frame_acertou_nivel)))
 
-;;Número --> String
+;;Void --> Void
 ;;Exibe a forca na tela de acordo com o número de vidas do jogador
 ;vetor-string-palavra-atual é a palavra que fica em baixo da forca, tipo: "a b a c a _ e"
 (define (forca)
@@ -1309,9 +1309,9 @@
 (define letras_chutadas empty)
 (define aux 0) 
 
-;;String --> Número
+;;String --> Void
 ;;Avalia se a letra já foi chutada ou não, se a letra está na palavra ou não, se o jogador acertou todas as letras ou não.
-;;E retorna um número que será usado para chamar a interface correta
+;;E define um número que será usado para chamar a interface correta
 (define (efetuou_chute letra)
   (set! aux 0) ;se aux = 0 o usuario errou a letra
   (if (member (string-downcase letra) letras_chutadas)
@@ -1426,7 +1426,7 @@
 ;Caixa de texto para inserir a letra
 (define text-box-forca (new text-field% [parent frame_forca] [label ""] [stretchable-width #t]))
 
-;;Input --> String
+;;Input --> Void
 ;;Define o botão forca, e captura o valor digitado no text-field
 (define button-forca
   (new
