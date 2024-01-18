@@ -6,7 +6,7 @@
 ;;        Gabriel Bitdinger Medeiros RA: 118542
 ;=============================================================
 
-;================Jogo da Forca em Racket =====================
+;================ Forca Lúdica em Racket =====================
 ;O trabalho consiste num jogo de forca associado a um quiz
 ;de perguntas sobre a linguagem Racket.
 ;O jogador deve chutar uma letra por vez. Caso acerte, pode
@@ -17,7 +17,7 @@
 ;jogador deve escolher a alternativa correta,e se errar, 
 ;perde mais uma vida. Se acertar, não perde vidas e tem o 
 ;direito de chutar mais uma letra.
-;O jogo possuí 3 níveis de dificuldade, e o jogador possui 
+;O jogo possui 3 níveis de dificuldade, e o jogador possui 
 ;6 vidas para cada nível, representadas pelo bonequinho na forca.
 ;Ao completar um nível, o próximo é iniciado. 
 ;Cada um dos níveis tem variações, e as palavras são sorteadas aleatoriamente. 
@@ -940,19 +940,19 @@
   (send frame_nivel_1.1 show #t))
 
 ;=============================================================
-;INTERFACE ACERTOU nivel
+;INTERFACE ACERTOU NIVEL
 ;=============================================================
 ; Frame que aparece quando o jogador acerta uma pergunta
 (define frame_acertou_nivel
   (new frame%
-       [label "Forca_acertou_nivel"]
+       [label "Acertou_nivel"]
        [width 300]
        [height 200]))
 
 (define msg-text1_acertou_nivel
   (new message%
        [parent frame_acertou_nivel]
-       [label "Parabéns, você acertou essa fase, agora você pode chutar letras!"]
+       [label "Parabéns, você acertou esse nível, agora você pode chutar letras!"]
        [stretchable-width #t]))
 
 ;;input --> void
@@ -969,19 +969,19 @@
   (send frame_acertou_nivel show #t))
 
 ;=============================================================
-;INTERFACE ERROU nivel
+;INTERFACE ERROU NIVEL
 ;=============================================================
 ; Frame que aparece quando o jogador erra uma pergunta
 (define frame_errou_nivel
   (new frame%
-       [label "Fase_perdeu_nivel"]
+       [label "Errou_nivel"]
        [width 300]
        [height 200]))
 
 (define msg-text1_perdeu_nivel
   (new message%
        [parent frame_errou_nivel]
-       [label "Você errou essa fase, você pode chutar letras mas perdeu uma vida."]
+       [label "Você errou esse nível, você pode chutar letras mas perdeu uma vida."]
        [stretchable-width #t]))
 
 ;;input --> void
@@ -1003,7 +1003,7 @@
 ; Frame que aparece quando o jogador acerta uma letra da palavra
 (define frame_forca_acertou
   (new frame%
-       [label "Forca_acertou"]
+       [label "Acertou_letra"]
        [width 300]
        [height 200]))
 
@@ -1025,21 +1025,20 @@
           (forca))])) ;CHAMA  A FORCA DNV
 (define (inicia_frame_forca_acertou)
   (send frame_forca_acertou show #t))
-
 ;=============================================================
 ;INTERFACE ERROU LETRA
 ;=============================================================
 ; Frame que aparece quando o jogador erra uma letra da palavra
 (define frame_forca_errou
   (new frame%
-       [label "Forca_perdeu"]
+       [label "Errou_Letra"]
        [width 300]
        [height 200]))
 
 (define msg-text1_perdeu
   (new message%
        [parent frame_forca_errou]
-       [label "Você errou a letra, passe por outra fase para voltar a chutar letras."]
+       [label "Você errou a letra, passe por outro nível para voltar a chutar letras."]
        [stretchable-width #t]))
 
 ;;input --> void
@@ -1061,7 +1060,7 @@
 ;Frame que aparece quando uma palavra é acertada, e o nível é vencido
 (define frame_passou_de_fase
   (new frame%
-       [label "Passou de fase"]
+       [label "Passou_de_fase"]
        [width 300]
        [height 200]))
 
@@ -1150,28 +1149,22 @@
 ;=============================================================
 ;SORTEIA PALAVRAS
 ;=============================================================
-;Void --> Vetor de Strings
-;Define as palavras a serem sorteadas no nível
-(define vetor_nivel3
-  (vector "unless" "define" "lambda" "provide" "require" "module" "include" "vector" "struct"))
-;Vetor --> String
-;Sorteia uma palavra
-(define palavra_nivel3 (vector-ref vetor_nivel3 (random 9)))
-;String --> Vetor de Strings
-;Usado para exibir o tamanho da palavra sorteada em baixo da forca
-(define vetor-string-palavra3 (make-vector (string-length palavra_nivel3) "_ "))
-
-;Repete o processo para os níveis 1 e 2
+;Define as palavras a serem sorteadas de cada nível
+(define vetor_nivel3 (vector "unless" "define" "lambda" "provide" "require" "module" "include" "vector" "struct"))
 (define vetor_nivel2 (vector "cond" "when" "case" "while" "begin" "match" "input"))
-(define palavra_nivel2 (vector-ref vetor_nivel2 (random 7)))
-(define vetor-string-palavra2 (make-vector (string-length palavra_nivel2) "_ "))
 (define vetor_nivel1 (vector "let" "set" "and" "not" "for" "key" "else"))
+;Sorteia uma palavra para cada nivel
+(define palavra_nivel3 (vector-ref vetor_nivel3 (random 9)))
+(define palavra_nivel2 (vector-ref vetor_nivel2 (random 7)))
+(define palavra_atual (vector-ref vetor_nivel1 (random 7)))
+
+;Usado para exibir o tamanho da palavra sorteada em baixo da forca, exemplo: "_ _ _ _"
 ;O nível 1 é inicalizado já na variável palavra_atual, que será usada para controlar 
 ;os níveis do jogo posteriormente.
-(define palavra_atual (vector-ref vetor_nivel1 (random 7)))
+(define vetor-string-palavra3 (make-vector (string-length palavra_nivel3) "_ "))
+(define vetor-string-palavra2 (make-vector (string-length palavra_nivel2) "_ "))
 (define vetor-string-palavra-atual (make-vector (string-length palavra_atual) "_ "))
 
-;Strings --> Lista
 ;Insere todas as palavras sorteadas em uma lista, que também será usada para controlar 
 ;os níveis do jogo posteriormente.
 (define lista_palavras (list palavra_nivel2 palavra_nivel3))
@@ -1179,14 +1172,13 @@
 ;=============================================================
 ;CONTROLADOR NIVEL
 ;=============================================================
-;;Métodos --> Lista
 ;;Lista de métodos que iniciam os níveis
 (define lista_niveis
   (list inicia_nivel_1.1
         inicia_nivel_1.2
         inicia_nivel_1.3
         inicia_nivel_1.4
-        inicia_nivel_1.5 ;eu tentei fazer uma lista de listas de niveis mas nao consegui :(
+        inicia_nivel_1.5
         inicia_nivel_2.1
         inicia_nivel_2.2
         inicia_nivel_2.3
@@ -1209,7 +1201,7 @@
 ;=============================================================
 (define fase 0)
 ;;Void --> Void
-;Função que percorre as listas de palavras e passa para o próximo nível.
+;Função que percorre as listas de palavras e passa para a próxima fase (próxima palavra).
 (define (proxima_palavra)
   (set! palavra_atual (first lista_palavras))
   (set! lista_palavras (rest lista_palavras))
@@ -1230,7 +1222,7 @@
     [(= fase 1)
      (set!
       lista_niveis
-      (remove*
+      (remove* ;remove os niveis não foram jogados da fase passada
        (list inicia_nivel_1.1 inicia_nivel_1.2 inicia_nivel_1.3 inicia_nivel_1.4 inicia_nivel_1.5)
        lista_niveis))
      (proxima_palavra)
@@ -1238,7 +1230,7 @@
     [(= fase 2)
      (set!
       lista_niveis
-      (remove*
+      (remove*  ;remove os niveis não foram jogados da fase passada
        (list inicia_nivel_2.1 inicia_nivel_2.2 inicia_nivel_2.3 inicia_nivel_2.4 inicia_nivel_2.5)
        lista_niveis))
      (proxima_palavra)
@@ -1255,6 +1247,8 @@
 
 ;;Boolean --> Void
 ;;essa funcao é chamada quando um nivel é completado e vai para a forca
+;;se acertou for verdadeiro significa que o usuario acertou o nível passado
+;;se acertou for falso significa que o usuario errou o nível passado
 (define (inicia_forca acertou) 
   (if (not acertou)
       (begin
@@ -1264,7 +1258,7 @@
 
 ;;Void --> Void
 ;;Exibe a forca na tela de acordo com o número de vidas do jogador
-;vetor-string-palavra-atual é a palavra que fica em baixo da forca, tipo: "a b a c a _ e"
+;;obs: vetor-string-palavra-atual é a palavra que fica em baixo da forca, tipo: "a b a c a _ e"
 (define (forca)
   (send msg-text9-forca set-label (string-join (vector->list vetor-string-palavra-atual) ""))
   (send msg-text11-forca set-label chutes)
@@ -1311,7 +1305,7 @@
 
 ;;String --> Void
 ;;Avalia se a letra já foi chutada ou não, se a letra está na palavra ou não, se o jogador acertou todas as letras ou não.
-;;E define um número que será usado para chamar a interface correta
+;;e define um número que será usado para chamar a interface correta
 (define (efetuou_chute letra)
   (set! aux 0) ;se aux = 0 o usuario errou a letra
   (if (member (string-downcase letra) letras_chutadas)
